@@ -26,12 +26,20 @@ export default function VisionCamPage() {
                 onMouseEnter={e => (e.currentTarget.style.color = "#38bdf8")}
                 onMouseLeave={e => (e.currentTarget.style.color = "#94a3b8")}>{l}</a>
             ))}
-            <a href="mailto:hello@wikolabs.com?subject=VisionCam — Demande de démo"
-              style={{
-                background: "#38bdf8", color: "#0f172a", padding: "8px 20px",
-                borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
-                fontFamily: "var(--font-display)", letterSpacing: .5,
-              }}>Demande de démo</a>
+            <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+                style={{
+                  background: "#38bdf8", color: "#0f172a", padding: "8px 20px",
+                  borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
+                  fontFamily: "var(--font-display)", letterSpacing: .5,
+                }}>📅 Réserver un créneau →</a>
+              <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
+                style={{
+                  background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "8px 20px",
+                  borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
+                  fontFamily: "var(--font-display)", letterSpacing: .5,
+                }}>💬 WhatsApp →</a>
+            </div>
           </div>
         </div>
       </nav>
@@ -67,13 +75,22 @@ export default function VisionCamPage() {
                 et détectez intrusions, incendies, plaques d'immatriculation — en moins de 300ms.
               </p>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <a href="mailto:hello@wikolabs.com?subject=VisionCam — Demande de démo"
-                  style={{
-                    background: "#38bdf8", color: "#0f172a", padding: "14px 32px",
-                    borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
-                    fontFamily: "var(--font-display)", letterSpacing: .5,
-                    boxShadow: "0 0 32px rgba(56,189,248,0.35)",
-                  }}>Activer la vision sur mes caméras</a>
+                <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+                  <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+                    style={{
+                      background: "#38bdf8", color: "#0f172a", padding: "14px 32px",
+                      borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
+                      fontFamily: "var(--font-display)", letterSpacing: .5,
+                      boxShadow: "0 0 32px rgba(56,189,248,0.35)",
+                    }}>📅 Réserver un créneau →</a>
+                  <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
+                    style={{
+                      background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "14px 32px",
+                      borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
+                      fontFamily: "var(--font-display)", letterSpacing: .5,
+                      boxShadow: "0 0 32px rgba(56,189,248,0.35)",
+                    }}>💬 WhatsApp →</a>
+                </div>
                 <a href="#features" style={{
                   border: "1px solid rgba(56,189,248,0.4)", color: "#38bdf8",
                   padding: "14px 28px", borderRadius: 8, fontSize: 14, textDecoration: "none",
@@ -357,13 +374,22 @@ export default function VisionCamPage() {
           <p style={{ color: "#94a3b8", fontSize: 18, lineHeight: 1.7, marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>
             Transformez votre infrastructure de surveillance existante en système d'intelligence artificielle opérationnel dès aujourd'hui.
           </p>
-          <a href="mailto:hello@wikolabs.com?subject=VisionCam — Demande de démo"
-            style={{
-              display: "inline-block", background: "#38bdf8", color: "#0f172a",
-              padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
-              textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
-              boxShadow: "0 0 48px rgba(56,189,248,0.4)",
-            }}>Activer la vision sur mes caméras</a>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+              style={{
+                display: "inline-block", background: "#38bdf8", color: "#0f172a",
+                padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
+                textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
+                boxShadow: "0 0 48px rgba(56,189,248,0.4)",
+              }}>📅 Réserver un créneau →</a>
+            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
+              style={{
+                display: "inline-block", background: "#25d366", borderColor: "#25d366", color: "#fff",
+                padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
+                textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
+                boxShadow: "0 0 48px rgba(56,189,248,0.4)",
+              }}>💬 WhatsApp →</a>
+          </div>
           <div style={{ color: "#475569", fontSize: 13, marginTop: 20 }}>
             Réponse sous 24h · Démo sur vos propres flux vidéo · Sans engagement
           </div>
