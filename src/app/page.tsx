@@ -1,3 +1,5 @@
+"use client";
+
 export default function VisionCamPage() {
   return (
     <div style={{ fontFamily: "var(--font-body)", background: "#f8fafc", color: "#0f172a" }}>
