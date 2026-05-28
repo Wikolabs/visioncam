@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 export default function VisionCamPage() {
   return (
@@ -409,6 +409,13 @@ export default function VisionCamPage() {
             ))}
           </div>
           <div style={{ color: "#334155", fontSize: 13 }}>© 2025 VisionCam — Un produit Wikolabs</div>
+        </div>
+        <div style={{ color: "#475569", fontSize: 13, textAlign: "center", marginTop: 16, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="mailto:team@wikolabs.com" style={{ color: "#475569", textDecoration: "none" }}>team@wikolabs.com</a>
+          <span>·</span>
+          <a href="tel:+261386626100" style={{ color: "#475569", textDecoration: "none" }}>+261 38 66 261 00</a>
+          <span>·</span>
+          <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer" style={{ color: "#475569", textDecoration: "none" }}>Prendre RDV</a>
         </div>
       </footer>
     </div>
