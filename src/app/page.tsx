@@ -27,12 +27,12 @@ export default function VisionCamPage() {
                 onMouseLeave={e => (e.currentTarget.style.color = "#94a3b8")}>{l}</a>
             ))}
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+              <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
                 style={{
                   background: "#38bdf8", color: "#0f172a", padding: "8px 20px",
                   borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
                   fontFamily: "var(--font-display)", letterSpacing: .5,
-                }}>📅 Réserver un créneau →</a>
+                }}>📅 Réserver un créneau →</button>
               <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
                 style={{
                   background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "8px 20px",
@@ -76,13 +76,13 @@ export default function VisionCamPage() {
               </p>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                 <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-                  <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+                  <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
                     style={{
                       background: "#38bdf8", color: "#0f172a", padding: "14px 32px",
                       borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
                       fontFamily: "var(--font-display)", letterSpacing: .5,
                       boxShadow: "0 0 32px rgba(56,189,248,0.35)",
-                    }}>📅 Réserver un créneau →</a>
+                    }}>📅 Réserver un créneau →</button>
                   <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
                     style={{
                       background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "14px 32px",
@@ -375,13 +375,13 @@ export default function VisionCamPage() {
             Transformez votre infrastructure de surveillance existante en système d'intelligence artificielle opérationnel dès aujourd'hui.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-block", background: "#38bdf8", color: "#0f172a",
                 padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
                 textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
                 boxShadow: "0 0 48px rgba(56,189,248,0.4)",
-              }}>📅 Réserver un créneau →</a>
+              }}>📅 Réserver un créneau →</button>
             <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-block", background: "#25d366", borderColor: "#25d366", color: "#fff",
