@@ -1,421 +1,229 @@
 ﻿"use client";
 
-export default function VisionCamPage() {
-  return (
-    <div style={{ fontFamily: "var(--font-body)", background: "#f8fafc", color: "#0f172a" }}>
+const P = {
+  name: "VisionCam",
+  tagLabel: "Analyse video IA · 99.7% de precision · Temps reel",
+  taglines: ["Vos cameras voient tout.", "Votre IA comprend tout.", "En moins de 300ms."],
+  taglineAccentIdx: 1,
+  desc: "VisionCam branche l'intelligence artificielle sur vos cameras IP existantes. Detection d'intrusion, incendie, lecture de plaques — 99.7% de precision, zero hardware supplementaire.",
+  accent: "#5B9CF6",
+  accentDim: "rgba(91,156,246,0.1)",
+  accentBorder: "rgba(91,156,246,0.25)",
+  accentGlow: "rgba(91,156,246,0.12)",
+  waText: "VisionCam",
+  navLinks: [
+    { label: "Fonctionnalites", href: "#features" },
+    { label: "Comment ca marche", href: "#process" },
+    { label: "Contact", href: "#cta" },
+  ],
+  metrics: [
+    { value: "99.7%", label: "precision detection" },
+    { value: "−94%", label: "faux positifs" },
+    { value: "0.3s", label: "temps de reponse" },
+    { value: "0", label: "hardware requis" },
+  ],
+  features: [
+    { icon: "🔌", title: "Plug & play sur vos cameras", desc: "Compatible RTSP, ONVIF et toutes cameras IP. Aucun remplacement materiel. Connexion a votre infrastructure existante en moins de 30 minutes." },
+    { icon: "🎯", title: "Detection multi-scenarios", desc: "Un seul flux, des dizaines de cas d'usage. Intrusion, incendie, plaques d'immatriculation, densite de foule — analyses simultanement sans configuration supplementaire." },
+    { icon: "🔔", title: "Alertes instantanees", desc: "Des qu'un evenement est detecte, votre equipe est notifiee en moins d'une seconde avec capture video, horodatage et niveau de confiance IA." },
+  ],
+  steps: [
+    { num: "01", title: "Connexion de vos flux video", desc: "Entrez l'URL RTSP ou activez la decouverte ONVIF automatique. Visioncam detecte et importe vos cameras en quelques clics, sans interruption." },
+    { num: "02", title: "Configuration des zones et scenarios", desc: "Dessinez vos zones de detection sur l'image. Selectionnez les types d'alertes : intrusion, incendie, LPR, foule. Aucun code requis." },
+    { num: "03", title: "Surveillance et alertes en continu", desc: "L'IA analyse vos flux 24h/24 et envoie les alertes instantanement par Slack, SMS, email ou webhook. Tableau de bord centralise inclus." },
+  ],
+  testimonials: [
+    { quote: "On a connecte 48 cameras sur 4 sites en une journee. Le taux de faux positifs est passe de 35% a 2%. Nos equipes de securite n'interviennent plus que sur de vraies alertes.", author: "Philippe M.", role: "Directeur Securite, Groupe Logistique" },
+    { quote: "VisionCam a detecte un debut d'incendie dans notre entrepot 4 minutes avant que les sprinklers se declenchent. Le systeme d'alerte precoce a ete decisif.", author: "Laure D.", role: "Responsable Securite Industrielle" },
+  ],
+  ctaTitle: "Vos cameras intelligentes en 30 minutes",
+  ctaDesc: "Demo sur vos propres flux video. Zero hardware supplementaire. Zero engagement. Reponse sous 24h.",
+  ctaPrimary: "Reserver un creneau",
+  footerTagline: "Surveillance video IA — Detection temps reel sur cameras existantes",
+};
 
-      {/* ── NAVBAR ── */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        background: "rgba(15,23,42,0.97)", backdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(56,189,248,0.15)",
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{
-              width: 34, height: 34, borderRadius: 8,
-              background: "linear-gradient(135deg,#38bdf8,#0ea5e9)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 16,
-            }}>📹</div>
-            <span style={{ fontFamily: "var(--font-display)", color: "#38bdf8", fontSize: 18, letterSpacing: 1 }}>VisionCam</span>
+export default function Page() {
+  const bg = "#04080F";
+  const bg2 = "#070D1B";
+  const card = "rgba(255,255,255,0.04)";
+  const border = "rgba(255,255,255,0.09)";
+  const gold = "#D4AF37";
+  const goldDim = "rgba(212,175,55,0.1)";
+  const goldBorder = "rgba(212,175,55,0.28)";
+  const txt1 = "#F0EDE6";
+  const txt2 = "#8B9DB5";
+  const txt3 = "#3C5068";
+  const { accent, accentDim, accentBorder, accentGlow } = P;
+
+  return (
+    <div style={{ minHeight: "100vh", background: bg, color: txt1 }}>
+      <style>{`
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulseDot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.4; transform:scale(1.6); } }
+        .wk-card { transition: background .3s, border-color .3s, transform .35s cubic-bezier(.34,1.2,.64,1); }
+        .wk-card:hover { background: rgba(255,255,255,0.07) !important; border-color: ${accentBorder} !important; transform: translateY(-6px) !important; }
+        .wk-btn { transition: opacity .2s, transform .2s, box-shadow .2s; }
+        .wk-btn:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,55,.18); }
+        .wk-wa { transition: opacity .2s, transform .2s; }
+        .wk-wa:hover { opacity:.9; transform:translateY(-2px); }
+        .wk-nav-link { color: #8B9DB5; text-decoration:none; font-size:14px; font-weight:500; transition:color .2s; }
+        .wk-nav-link:hover { color: #F0EDE6; }
+        @media(max-width:640px){ .wk-hide-sm{ display:none!important; } .wk-hero-title{ font-size:2.4rem!important; } }
+      `}</style>
+
+      {/* NAVBAR */}
+      <nav style={{ position:"sticky", top:0, zIndex:100, background:"rgba(4,8,15,0.82)", backdropFilter:"blur(20px)", borderBottom:`1px solid ${border}`, padding:"0 40px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <span style={{ fontSize:18, fontWeight:800, letterSpacing:"-0.5px", color:txt1 }}>
+          {P.name}<span style={{ color:gold }}>.</span>
+        </span>
+        <div style={{ display:"flex", gap:28, alignItems:"center" }}>
+          <div className="wk-hide-sm" style={{ display:"flex", gap:24 }}>
+            {P.navLinks.map(l => <a key={l.label} href={l.href} className="wk-nav-link">{l.label}</a>)}
           </div>
-          <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-            {["Fonctionnalités", "Détection", "Alertes", "Tarifs"].map(l => (
-              <a key={l} href="#" style={{ color: "#94a3b8", fontSize: 14, textDecoration: "none", transition: "color .2s" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#38bdf8")}
-                onMouseLeave={e => (e.currentTarget.style.color = "#94a3b8")}>{l}</a>
-            ))}
-            <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-              <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-                style={{
-                  background: "#38bdf8", color: "#0f172a", padding: "8px 20px",
-                  borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
-                  fontFamily: "var(--font-display)", letterSpacing: .5,
-                }}>📅 Réserver un créneau →</button>
-              <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
-                style={{
-                  background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "8px 20px",
-                  borderRadius: 6, fontSize: 14, fontWeight: 700, textDecoration: "none",
-                  fontFamily: "var(--font-display)", letterSpacing: .5,
-                }}>💬 WhatsApp →</a>
-            </div>
-          </div>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:8, padding:"8px 18px", fontWeight:700, fontSize:13.5, cursor:"pointer", fontFamily:"inherit" }}>
+            Reserver →
+          </button>
         </div>
       </nav>
 
-      {/* ── HERO ── */}
-      <section style={{
-        background: "linear-gradient(160deg,#0f172a 0%,#0c2340 60%,#0f172a 100%)",
-        paddingTop: 120, paddingBottom: 80, minHeight: "100vh",
-        display: "flex", alignItems: "center",
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-
-            {/* Left copy */}
-            <div>
-              <div style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.3)",
-                borderRadius: 20, padding: "6px 16px", marginBottom: 24,
-              }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#38bdf8", display: "inline-block" }}></span>
-                <span style={{ color: "#38bdf8", fontSize: 13, fontWeight: 600 }}>Analyse vidéo IA en temps réel</span>
-              </div>
-              <h1 style={{
-                fontFamily: "var(--font-display)", color: "#f1f5f9",
-                fontSize: "clamp(28px,4vw,52px)", lineHeight: 1.15, marginBottom: 20, margin: "0 0 20px",
-              }}>
-                Surveillance<br />
-                <span style={{ color: "#38bdf8" }}>intelligente</span>
-              </h1>
-              <p style={{ color: "#94a3b8", fontSize: 18, lineHeight: 1.7, marginBottom: 32, maxWidth: 480 }}>
-                99.7% de précision, zéro faux positif. Branchez l'IA sur vos caméras existantes
-                et détectez intrusions, incendies, plaques d'immatriculation — en moins de 300ms.
-              </p>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-                  <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-                    style={{
-                      background: "#38bdf8", color: "#0f172a", padding: "14px 32px",
-                      borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
-                      fontFamily: "var(--font-display)", letterSpacing: .5,
-                      boxShadow: "0 0 32px rgba(56,189,248,0.35)",
-                    }}>📅 Réserver un créneau →</button>
-                  <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
-                    style={{
-                      background: "#25d366", borderColor: "#25d366", color: "#fff", padding: "14px 32px",
-                      borderRadius: 8, fontSize: 16, fontWeight: 700, textDecoration: "none",
-                      fontFamily: "var(--font-display)", letterSpacing: .5,
-                      boxShadow: "0 0 32px rgba(56,189,248,0.35)",
-                    }}>💬 WhatsApp →</a>
-                </div>
-                <a href="#features" style={{
-                  border: "1px solid rgba(56,189,248,0.4)", color: "#38bdf8",
-                  padding: "14px 28px", borderRadius: 8, fontSize: 14, textDecoration: "none",
-                }}>Voir les fonctionnalités →</a>
-              </div>
-              {/* Trust badges */}
-              <div style={{ display: "flex", gap: 24, marginTop: 40, flexWrap: "wrap" }}>
-                {[["99.7%", "Précision"], ["−94%", "Faux positifs"], ["0.3s", "Temps réponse"]].map(([v, l]) => (
-                  <div key={l} style={{ textAlign: "center" }}>
-                    <div style={{ fontFamily: "var(--font-display)", color: "#38bdf8", fontSize: 22, fontWeight: 700 }}>{v}</div>
-                    <div style={{ color: "#64748b", fontSize: 12 }}>{l}</div>
-                  </div>
-                ))}
-              </div>
+      {/* HERO */}
+      <section style={{ padding:"100px 40px 80px", maxWidth:1000, margin:"0 auto", textAlign:"center", position:"relative" }}>
+        <div style={{ position:"absolute", top:-60, left:"50%", transform:"translateX(-50%)", width:700, height:600, background:`radial-gradient(ellipse at 50% 30%, ${accentGlow} 0%, transparent 60%)`, pointerEvents:"none" }} />
+        <div style={{ display:"inline-flex", alignItems:"center", gap:8, marginBottom:24, background:accentDim, border:`1px solid ${accentBorder}`, borderRadius:100, padding:"6px 18px", animation:"fadeUp .5s ease both" }}>
+          <span style={{ width:7, height:7, borderRadius:"50%", background:accent, display:"inline-block", animation:"pulseDot 2s ease-in-out infinite" }} />
+          <span style={{ color:accent, fontSize:11.5, fontWeight:700, letterSpacing:"2px", textTransform:"uppercase" }}>{P.tagLabel}</span>
+        </div>
+        <h1 className="wk-hero-title" style={{ fontSize:"clamp(2.6rem,6vw,5rem)", fontWeight:700, lineHeight:1.08, letterSpacing:"-0.03em", marginBottom:28, fontFamily:"'Instrument Serif',Georgia,serif", animation:"fadeUp .5s .08s ease both" }}>
+          {P.taglines.map((line, i) => (
+            <span key={i} style={{ display:"block", color:i===P.taglineAccentIdx?accent:txt1, fontStyle:i===P.taglineAccentIdx?"italic":"normal" }}>{line}</span>
+          ))}
+        </h1>
+        <p style={{ fontSize:"1.1rem", color:txt2, lineHeight:1.72, maxWidth:580, margin:"0 auto 48px", animation:"fadeUp .5s .16s ease both" }}>{P.desc}</p>
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap:14, marginBottom:44, animation:"fadeUp .5s .24s ease both" }}>
+          {P.metrics.map(m => (
+            <div key={m.label} style={{ background:card, border:`1px solid ${border}`, borderRadius:18, padding:"14px 22px", textAlign:"center", minWidth:118 }}>
+              <div style={{ fontSize:"1.7rem", fontWeight:800, color:txt1, letterSpacing:"-1.5px", lineHeight:1 }}>{m.value}</div>
+              <div style={{ fontSize:"0.62rem", color:txt3, textTransform:"uppercase", letterSpacing:"1.5px", marginTop:5 }}>{m.label}</div>
             </div>
+          ))}
+        </div>
+        <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center", animation:"fadeUp .5s .32s ease both" }}>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+            📅 {P.ctaPrimary}
+          </button>
+          <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+            target="_blank" rel="noopener noreferrer" className="wk-wa"
+            style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+            💬 WhatsApp
+          </a>
+        </div>
+      </section>
 
-            {/* Right — CCTV grid mockup */}
-            <div style={{
-              background: "#0a0f1a", borderRadius: 16, border: "1px solid rgba(56,189,248,0.2)",
-              padding: 16, boxShadow: "0 0 60px rgba(56,189,248,0.08)",
-            }}>
-              {/* Header bar */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                <span style={{ color: "#38bdf8", fontSize: 12, fontFamily: "var(--font-display)", letterSpacing: 1 }}>● LIVE MONITORING</span>
-                <span style={{ color: "#64748b", fontSize: 11 }}>26 mai 2026 — 14:32:07</span>
-              </div>
+      {/* FEATURES */}
+      <section id="features" style={{ padding:"80px 40px", maxWidth:1100, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:52 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Fonctionnalites</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif", lineHeight:1.15 }}>
+            Une IA qui voit tout, <em style={{ fontStyle:"italic", color:gold }}>en temps reel</em>
+          </h2>
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:20 }}>
+          {P.features.map((f, i) => (
+            <div key={f.title} className="wk-card" style={{ background:card, border:`1px solid ${border}`, borderRadius:20, padding:"28px 28px 24px", position:"relative", overflow:"hidden" }}>
+              <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${i===0?gold:accent},transparent)`, opacity:.6 }} />
+              <div style={{ fontSize:"2rem", marginBottom:16 }}>{f.icon}</div>
+              <h3 style={{ fontSize:"1.05rem", fontWeight:700, color:txt1, marginBottom:10 }}>{f.title}</h3>
+              <p style={{ fontSize:"0.88rem", color:txt2, lineHeight:1.7, margin:0 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-              {/* 2×2 camera grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 12 }}>
-                {/* CAM-01: green bounding box */}
-                <div style={{ background: "#0d1424", borderRadius: 8, aspectRatio: "16/9", position: "relative", overflow: "hidden", border: "1px solid #1e293b" }}>
-                  <div style={{ position: "absolute", top: 6, left: 6, color: "#94a3b8", fontSize: 9, fontFamily: "var(--font-display)" }}>CAM-01 · Entrée principale</div>
-                  {/* Fake scene elements */}
-                  <div style={{ position: "absolute", bottom: "25%", left: "30%", width: "28%", height: "45%",
-                    border: "2px solid #22c55e", borderRadius: 3 }}>
-                    <div style={{ position: "absolute", top: -18, left: 0, background: "#22c55e", color: "#000", fontSize: 8,
-                      padding: "1px 5px", borderRadius: 2, whiteSpace: "nowrap", fontWeight: 700 }}>Personne autorisée ✓</div>
-                  </div>
-                  <div style={{ position: "absolute", bottom: 6, right: 6, background: "rgba(34,197,94,0.15)",
-                    border: "1px solid #22c55e", borderRadius: 3, padding: "2px 6px", color: "#22c55e", fontSize: 9 }}>NORMAL</div>
+      {/* HOW IT WORKS */}
+      <section id="process" style={{ padding:"80px 40px", background:bg2 }}>
+        <div style={{ maxWidth:860, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:48 }}>
+            <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Comment ca marche</p>
+            <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>
+              Operationnel en <em style={{ fontStyle:"italic", color:accent }}>30 minutes</em>
+            </h2>
+          </div>
+          <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
+            {P.steps.map((s, i) => (
+              <div key={s.num} style={{ display:"flex", alignItems:"flex-start", gap:22, background:card, border:`1px solid ${border}`, borderRadius:18, padding:"22px 26px" }}>
+                <div style={{ flexShrink:0, width:46, height:46, background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", color:i===0?gold:accent, fontWeight:800, fontSize:15 }}>
+                  {s.num}
                 </div>
-
-                {/* CAM-02 */}
-                <div style={{ background: "#0d1424", borderRadius: 8, aspectRatio: "16/9", position: "relative", overflow: "hidden", border: "1px solid #1e293b" }}>
-                  <div style={{ position: "absolute", top: 6, left: 6, color: "#94a3b8", fontSize: 9, fontFamily: "var(--font-display)" }}>CAM-02 · Parking ouest</div>
-                  {/* car-like shape */}
-                  <div style={{ position: "absolute", bottom: "20%", left: "20%", width: "35%", height: "25%",
-                    border: "1px solid #475569", borderRadius: 3, background: "rgba(71,85,105,0.3)" }}></div>
-                  <div style={{ position: "absolute", bottom: 6, right: 6, background: "rgba(56,189,248,0.1)",
-                    border: "1px solid #38bdf8", borderRadius: 3, padding: "2px 6px", color: "#38bdf8", fontSize: 9 }}>2 véhicules</div>
-                </div>
-
-                {/* CAM-03: red pulsing intrusion */}
-                <div style={{
-                  background: "#0d1424", borderRadius: 8, aspectRatio: "16/9", position: "relative", overflow: "hidden",
-                  border: "2px solid #ef4444",
-                  animation: "pulse-border 1.2s ease-in-out infinite",
-                }}>
-                  <style>{`@keyframes pulse-border{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.7)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}`}</style>
-                  <div style={{ position: "absolute", top: 6, left: 6, color: "#fca5a5", fontSize: 9, fontFamily: "var(--font-display)" }}>CAM-03 · Zone restreinte</div>
-                  <div style={{ position: "absolute", top: "20%", left: "15%", width: "32%", height: "55%",
-                    border: "2px solid #ef4444", borderRadius: 3 }}>
-                    <div style={{ position: "absolute", top: -18, left: 0, background: "#ef4444", color: "#fff", fontSize: 8,
-                      padding: "1px 5px", borderRadius: 2, whiteSpace: "nowrap", fontWeight: 700 }}>⚠ Intrusion détectée</div>
-                  </div>
-                  <div style={{ position: "absolute", bottom: 6, right: 6, background: "rgba(239,68,68,0.2)",
-                    border: "1px solid #ef4444", borderRadius: 3, padding: "2px 6px", color: "#fca5a5", fontSize: 9 }}>ALERTE</div>
-                </div>
-
-                {/* CAM-04 */}
-                <div style={{ background: "#0d1424", borderRadius: 8, aspectRatio: "16/9", position: "relative", overflow: "hidden", border: "1px solid #1e293b" }}>
-                  <div style={{ position: "absolute", top: 6, left: 6, color: "#94a3b8", fontSize: 9, fontFamily: "var(--font-display)" }}>CAM-04 · Hall accueil</div>
-                  {/* crowd dots */}
-                  {[{l:"20%",b:"30%"},{l:"35%",b:"35%"},{l:"50%",b:"28%"},{l:"42%",b:"40%"},{l:"28%",b:"42%"}].map((p,i)=>(
-                    <div key={i} style={{ position:"absolute", bottom:p.b, left:p.l, width:8, height:14,
-                      background:"rgba(148,163,184,0.4)", borderRadius:"50% 50% 40% 40%", border:"1px solid #475569" }}></div>
-                  ))}
-                  <div style={{ position: "absolute", bottom: 6, right: 6, background: "rgba(251,191,36,0.1)",
-                    border: "1px solid #fbbf24", borderRadius: 3, padding: "2px 6px", color: "#fbbf24", fontSize: 9 }}>Densité: 5 pers.</div>
+                <div>
+                  <h3 style={{ fontSize:"1rem", fontWeight:700, color:txt1, marginBottom:6, lineHeight:1.3 }}>{s.title}</h3>
+                  <p style={{ fontSize:"0.87rem", color:txt2, lineHeight:1.7, margin:0 }}>{s.desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {/* Sidebar stats + timeline */}
-              <div style={{ background: "#060d18", borderRadius: 8, padding: 12, border: "1px solid #1e293b" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8, marginBottom: 10 }}>
-                  {[
-                    { label: "Alertes actives", value: "1", color: "#ef4444" },
-                    { label: "Objets détectés", value: "7", color: "#38bdf8" },
-                    { label: "Temps réponse", value: "0.3s", color: "#22c55e" },
-                    { label: "Caméras actives", value: "4/4", color: "#a78bfa" },
-                  ].map(({ label, value, color }) => (
-                    <div key={label} style={{ textAlign: "center", background: "#0a1020", borderRadius: 6, padding: "6px 4px" }}>
-                      <div style={{ color, fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700 }}>{value}</div>
-                      <div style={{ color: "#475569", fontSize: 9, marginTop: 2 }}>{label}</div>
-                    </div>
-                  ))}
-                </div>
-                {/* Timeline */}
-                <div style={{ fontSize: 10, color: "#64748b" }}>
-                  {[
-                    { t: "14:32:07", e: "⚠ Intrusion — CAM-03 Zone restreinte", c: "#fca5a5" },
-                    { t: "14:31:44", e: "✓ Plaque LM-349-FR identifiée — CAM-02", c: "#86efac" },
-                    { t: "14:30:12", e: "ℹ Densité élevée détectée — CAM-04", c: "#fde68a" },
-                    { t: "14:28:55", e: "✓ Accès autorisé — CAM-01", c: "#86efac" },
-                  ].map(({ t, e, c }) => (
-                    <div key={t} style={{ display: "flex", gap: 8, padding: "3px 0", borderBottom: "1px solid #0f172a", alignItems: "center" }}>
-                      <span style={{ color: "#475569", fontFamily: "var(--font-display)", minWidth: 52 }}>{t}</span>
-                      <span style={{ color: c }}>{e}</span>
-                    </div>
-                  ))}
+      {/* TESTIMONIALS */}
+      <section style={{ padding:"80px 40px", maxWidth:900, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:44 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Temoignages</p>
+          <h2 style={{ fontSize:"clamp(1.6rem,3vw,2.4rem)", fontWeight:700, color:txt1, fontFamily:"'Instrument Serif',Georgia,serif" }}>Ce qu'en disent nos clients</h2>
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:20 }}>
+          {P.testimonials.map((t, i) => (
+            <div key={i} style={{ background:card, border:`1px solid ${border}`, borderLeft:`3px solid ${i===0?gold:accent}`, borderRadius:20, padding:"26px 26px 22px" }}>
+              <p style={{ fontSize:"0.92rem", color:txt2, lineHeight:1.75, fontStyle:"italic", marginBottom:20 }}>&ldquo;{t.quote}&rdquo;</p>
+              <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                <div style={{ width:38, height:38, borderRadius:"50%", background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>👤</div>
+                <div>
+                  <div style={{ fontSize:"0.9rem", fontWeight:700, color:txt1 }}>{t.author}</div>
+                  <div style={{ fontSize:"0.72rem", color:txt3 }}>{t.role}</div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="cta" style={{ padding:"0 40px 100px", maxWidth:860, margin:"0 auto" }}>
+        <div style={{ background:card, border:`1px solid ${goldBorder}`, borderRadius:24, padding:"64px 48px", textAlign:"center", backgroundImage:`radial-gradient(ellipse at 50% 0%, ${goldDim} 0%, transparent 65%)` }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:16 }}>Demarrer</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, marginBottom:14, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>{P.ctaTitle}</h2>
+          <p style={{ color:txt2, fontSize:"1rem", marginBottom:36, lineHeight:1.7 }}>{P.ctaDesc}</p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center" }}>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+              style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+              📅 {P.ctaPrimary}
+            </button>
+            <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+              target="_blank" rel="noopener noreferrer" className="wk-wa"
+              style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+              💬 WhatsApp
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── FEATURES ── */}
-      <section id="features" style={{ padding: "96px 24px", background: "#f8fafc" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <div style={{ color: "#38bdf8", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Fonctionnalités</div>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px,3vw,40px)", color: "#0f172a", margin: 0 }}>
-              Une IA qui voit tout,<br />
-              <span style={{ color: "#38bdf8" }}>en temps réel</span>
-            </h2>
+      {/* FOOTER */}
+      <footer style={{ borderTop:`1px solid ${border}`, padding:"32px 40px" }}>
+        <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", flexWrap:"wrap", justifyContent:"space-between", alignItems:"center", gap:16 }}>
+          <div>
+            <span style={{ fontWeight:800, fontSize:16, color:txt1 }}>{P.name}</span><span style={{ color:gold }}>.</span>
+            <span style={{ display:"block", fontSize:12, color:txt3, marginTop:3 }}>{P.footerTagline}</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
-            {[
-              {
-                icon: "🔌",
-                title: "Plug & play sur vos caméras",
-                desc: "Compatible RTSP, ONVIF et toutes caméras IP. Aucun remplacement matériel. Connectez VisionCam à votre infrastructure existante en moins de 30 minutes.",
-                bullets: ["Support RTSP / ONVIF / HLS", "NVR et DVR compatibles", "Installation sans interruption de service"],
-              },
-              {
-                icon: "🎯",
-                title: "Détection multi-scénarios",
-                desc: "Un seul flux, des dizaines de cas d'usage. L'IA analyse chaque frame pour détecter simultanément plusieurs types d'événements, sans config supplémentaire.",
-                bullets: ["Intrusion & périmètre", "Incendie & fumée", "Plaques d'immatriculation", "Oubli d'objet & foule"],
-              },
-              {
-                icon: "🔔",
-                title: "Alertes temps réel",
-                desc: "Dès qu'un événement est détecté, votre équipe est notifiée en moins d'une seconde avec capture vidéo, horodatage et niveau de confiance.",
-                bullets: ["Slack, Teams, SMS, email", "Webhook configurable", "Capture vidéo de l'incident", "Tableau de bord centralisé"],
-              },
-            ].map(({ icon, title, desc, bullets }) => (
-              <div key={title} style={{
-                background: "#fff", borderRadius: 16, padding: 32,
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                transition: "transform .2s, box-shadow .2s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(56,189,248,0.12)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)"; }}>
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{icon}</div>
-                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 17, color: "#0f172a", marginBottom: 12 }}>{title}</h3>
-                <p style={{ color: "#64748b", lineHeight: 1.7, fontSize: 14, marginBottom: 16 }}>{desc}</p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {bullets.map(b => (
-                    <li key={b} style={{ display: "flex", alignItems: "center", gap: 8, color: "#475569", fontSize: 13, marginBottom: 6 }}>
-                      <span style={{ color: "#38bdf8", fontWeight: 700 }}>→</span> {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <p style={{ fontSize:13, color:txt3 }}>© 2026 {P.name} — Un produit <a href="https://wikolabs.com" style={{ color:txt2, textDecoration:"none" }}>Wikolabs</a></p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:16, fontSize:13, alignItems:"center" }}>
+            <a href="mailto:team@wikolabs.com" style={{ color:txt3, textDecoration:"none" }}>team@wikolabs.com</a>
+            <span style={{ color:txt3 }}>·</span>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' style={{ background:"none", border:"none", color:txt3, fontSize:13, cursor:"pointer", fontFamily:"inherit", padding:0 }}>Prendre RDV</button>
           </div>
-        </div>
-      </section>
-
-      {/* ── DETECTION SCENARIOS ── */}
-      <section style={{ padding: "80px 24px", background: "#0f172a" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ color: "#38bdf8", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Scénarios de détection</div>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,3vw,36px)", color: "#f1f5f9", margin: 0 }}>
-              Entraîné pour les <span style={{ color: "#38bdf8" }}>situations critiques</span>
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-            {[
-              { emoji: "🚨", label: "Intrusion périmétrique", conf: "99.4%", color: "#ef4444" },
-              { emoji: "🔥", label: "Incendie & fumée", conf: "99.1%", color: "#f97316" },
-              { emoji: "🚗", label: "Lecture de plaques (LPR)", conf: "99.8%", color: "#38bdf8" },
-              { emoji: "👥", label: "Densité de foule", conf: "98.7%", color: "#a78bfa" },
-              { emoji: "📦", label: "Objet abandonné", conf: "97.9%", color: "#fbbf24" },
-              { emoji: "🏃", label: "Comportement anormal", conf: "97.2%", color: "#22c55e" },
-            ].map(({ emoji, label, conf, color }) => (
-              <div key={label} style={{
-                background: "#0c1a2e", borderRadius: 12, padding: "24px 20px",
-                border: `1px solid ${color}30`, display: "flex", alignItems: "center", gap: 16,
-              }}>
-                <div style={{ fontSize: 28, flexShrink: 0 }}>{emoji}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ color: "#e2e8f0", fontSize: 14, fontWeight: 600, marginBottom: 4 }}>{label}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ height: 4, flex: 1, background: "#1e293b", borderRadius: 2, overflow: "hidden" }}>
-                      <div style={{ height: "100%", background: color, width: conf, borderRadius: 2 }}></div>
-                    </div>
-                    <span style={{ color, fontSize: 12, fontFamily: "var(--font-display)", minWidth: 36 }}>{conf}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── STATS / ROI ── */}
-      <section style={{ padding: "96px 24px", background: "#f0f9ff" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ color: "#38bdf8", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Résultats mesurés</div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,3vw,38px)", color: "#0f172a", marginBottom: 64 }}>
-            Des chiffres qui parlent d'eux-mêmes
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32, marginBottom: 48 }}>
-            {[
-              { value: "99.7%", label: "de précision de détection", sub: "sur 10 millions d'événements analysés" },
-              { value: "−94%", label: "de faux positifs", sub: "vs systèmes de détection de mouvement classiques" },
-              { value: "0", label: "hardware supplémentaire requis", sub: "fonctionne sur vos caméras IP existantes" },
-            ].map(({ value, label, sub }) => (
-              <div key={value} style={{
-                background: "#fff", borderRadius: 16, padding: "40px 24px",
-                border: "1px solid #bae6fd", boxShadow: "0 2px 12px rgba(56,189,248,0.08)",
-              }}>
-                <div style={{ fontFamily: "var(--font-display)", color: "#38bdf8", fontSize: "clamp(32px,4vw,52px)", fontWeight: 700, lineHeight: 1 }}>{value}</div>
-                <div style={{ color: "#0f172a", fontWeight: 700, fontSize: 15, marginTop: 12, marginBottom: 8 }}>{label}</div>
-                <div style={{ color: "#64748b", fontSize: 13, lineHeight: 1.5 }}>{sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS ── */}
-      <section style={{ padding: "80px 24px", background: "#fff" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ color: "#38bdf8", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>Mise en service</div>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,3vw,36px)", color: "#0f172a", margin: 0 }}>
-              Opérationnel en <span style={{ color: "#38bdf8" }}>30 minutes</span>
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 24 }}>
-            {[
-              { n: "01", t: "Connexion flux", d: "Entrez l'URL RTSP ou activez la découverte ONVIF" },
-              { n: "02", t: "Configuration des zones", d: "Dessinez vos zones de détection sur l'image" },
-              { n: "03", t: "Choix des scénarios", d: "Sélectionnez les types d'alertes souhaités" },
-              { n: "04", t: "Go live", d: "L'IA analyse vos flux et envoie les alertes en temps réel" },
-            ].map(({ n, t, d }) => (
-              <div key={n} style={{ textAlign: "center" }}>
-                <div style={{
-                  width: 56, height: 56, borderRadius: "50%",
-                  background: "linear-gradient(135deg,#38bdf8,#0ea5e9)", color: "#0f172a",
-                  fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  margin: "0 auto 16px",
-                }}>{n}</div>
-                <div style={{ fontWeight: 700, color: "#0f172a", marginBottom: 8, fontSize: 14 }}>{t}</div>
-                <div style={{ color: "#64748b", fontSize: 13, lineHeight: 1.6 }}>{d}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA SECTION ── */}
-      <section style={{
-        padding: "100px 24px",
-        background: "linear-gradient(135deg,#0f172a 0%,#0c2340 100%)",
-        textAlign: "center",
-      }}>
-        <div style={{ maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ fontSize: 48, marginBottom: 20 }}>📹</div>
-          <h2 style={{ fontFamily: "var(--font-display)", color: "#f1f5f9", fontSize: "clamp(24px,3vw,42px)", marginBottom: 16 }}>
-            Vos caméras méritent mieux<br />
-            <span style={{ color: "#38bdf8" }}>qu'une simple image</span>
-          </h2>
-          <p style={{ color: "#94a3b8", fontSize: 18, lineHeight: 1.7, marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>
-            Transformez votre infrastructure de surveillance existante en système d'intelligence artificielle opérationnel dès aujourd'hui.
-          </p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-              style={{
-                display: "inline-block", background: "#38bdf8", color: "#0f172a",
-                padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
-                textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
-                boxShadow: "0 0 48px rgba(56,189,248,0.4)",
-              }}>📅 Réserver un créneau →</button>
-            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20VisionCam%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
-              style={{
-                display: "inline-block", background: "#25d366", borderColor: "#25d366", color: "#fff",
-                padding: "18px 48px", borderRadius: 10, fontSize: 17, fontWeight: 700,
-                textDecoration: "none", fontFamily: "var(--font-display)", letterSpacing: .5,
-                boxShadow: "0 0 48px rgba(56,189,248,0.4)",
-              }}>💬 WhatsApp →</a>
-          </div>
-          <div style={{ color: "#475569", fontSize: 13, marginTop: 20 }}>
-            Réponse sous 24h · Démo sur vos propres flux vidéo · Sans engagement
-          </div>
-        </div>
-      </section>
-
-      {/* ── FOOTER ── */}
-      <footer style={{ background: "#060d18", padding: "32px 24px", borderTop: "1px solid #1e293b" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontFamily: "var(--font-display)", color: "#38bdf8", fontSize: 16, letterSpacing: 1 }}>VisionCam</span>
-            <span style={{ color: "#334155", fontSize: 13 }}>— Un produit Wikolabs</span>
-          </div>
-          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-            {["Fonctionnalités", "Documentation", "Confidentialité", "CGU"].map(l => (
-              <a key={l} href="#" style={{ color: "#475569", fontSize: 13, textDecoration: "none" }}>{l}</a>
-            ))}
-          </div>
-          <div style={{ color: "#334155", fontSize: 13 }}>© 2025 VisionCam — Un produit Wikolabs</div>
-        </div>
-        <div style={{ color: "#475569", fontSize: 13, textAlign: "center", marginTop: 16, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="mailto:team@wikolabs.com" style={{ color: "#475569", textDecoration: "none" }}>team@wikolabs.com</a>
-          <span>·</span>
-          <a href="tel:+261386626100" style={{ color: "#475569", textDecoration: "none" }}>+261 38 66 261 00</a>
-          <span>·</span>
-          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer" style={{ color: "#475569", textDecoration: "none" }} style={{cursor:"pointer",background:"none",border:"none",padding:0,font:"inherit",color:"inherit",textDecoration:"none"}}>Prendre RDV</button>
         </div>
       </footer>
     </div>
